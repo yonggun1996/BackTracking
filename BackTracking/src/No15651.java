@@ -44,9 +44,6 @@ public class No15651 {
 		
 		bw.flush();
 		
-		long after = System.currentTimeMillis();
-		long second = (after - before) / 1000;
-		System.out.println(second + " √ ");
 		
 	}
 
