@@ -1,27 +1,36 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
-public class No14888 {
+public class No14888Buffer {
 	
 	static HashSet<String> operator_order_set = new HashSet<String>();
 	static int[] operator_array = new int[4];
 	static int[] visit_count = new int[4];
 	static int[] number_array;
 
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		//Scanner in = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		int number_array_size = in.nextInt();
+		int number_array_size = Integer.parseInt(st.nextToken());
 		number_array = new int[number_array_size];
 		
 		for(int i = 0; i < number_array_size; i++) {
-			number_array[i] = in.nextInt();
+			st = new StringTokenizer(br.readLine());
+			number_array[i] = Integer.parseInt(st.nextToken());
 		}
 		
 		for(int i = 0; i < 4; i++) {
-			operator_array[i] = in.nextInt();
+			st = new StringTokenizer(br.readLine());
+			operator_array[i] = Integer.parseInt(st.nextToken());
 			visit_count[i] = operator_array[i];
 		}
 		
@@ -47,19 +56,27 @@ public class No14888 {
 			calculation_result.add(result);
 		}
 		
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
 		if(calculation_result.size() == 1) {
-			System.out.println(calculation_result.get(0));
-			System.out.println(calculation_result.get(0));
+			//System.out.println(calculation_result.get(0));
+			//System.out.println(calculation_result.get(0));
+			bw.write(String.valueOf(calculation_result.get(0)));
+			bw.newLine();
+			bw.write(String.valueOf(calculation_result.get(0)));
 		}else {
 			Collections.sort(calculation_result);
-			System.out.println(calculation_result.get(calculation_result.size() - 1));
-			System.out.println(calculation_result.get(0));
+			//System.out.println(calculation_result.get(calculation_result.size() - 1));
+			//System.out.println(calculation_result.get(0));
+			bw.write(String.valueOf(calculation_result.get(calculation_result.size() - 1)));
+			bw.newLine();
+			bw.write(String.valueOf(calculation_result.get(0)));
 		}
 		
-		
+		bw.flush();
+		bw.close();
 	}
 	
-	//연산 순서를 구하는 함수
 	public static void make_operator_order(StringBuilder operator_order, int index) {
 		
 		if(operator_order.length() == number_array.length - 1) {
@@ -82,7 +99,6 @@ public class No14888 {
 		}
 	}
 	
-	//배열방에 따른 연산을 붙여 만드는 함수
 	public static StringBuilder append_operator_order(StringBuilder operator_order, int flag) {
 		switch (flag) {
 		case 0:
@@ -105,7 +121,6 @@ public class No14888 {
 		return operator_order;
 	}
 	
-	//값들을 구하는 함수
 	public static long Finding_Value(String operator_order) {
 		long result = number_array[0];
 		

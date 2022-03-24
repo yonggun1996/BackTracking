@@ -28,16 +28,6 @@ public class No14889 {
 		visit[0] = true;
 		Divide_team(member, 1);
 		
-		for(int i = 0; i < team_list1.size(); i++) {
-			System.out.print(team_list1.get(i) + " ");
-		}
-		System.out.println();
-		
-		for(int i = 0; i < team_list2.size(); i++) {
-			System.out.print(team_list2.get(i) + " ");
-		}
-		System.out.println();
-		
 		ArrayList<Integer> synergy_list = new ArrayList<Integer>();
 		
 		for(int i = 0; i < team_list1.size(); i++) {

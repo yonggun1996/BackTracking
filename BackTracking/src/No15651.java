@@ -21,20 +21,16 @@ public class No15651 {
 				answer.delete(answer.length() - 2, answer.length());
 			}
 		}else {
-			//System.out.print(answer.toString());
-			//System.out.println();
 			bw.write(answer.toString());
 			bw.newLine();
 		}
 	}
 
 	public static void main(String[] args) throws IOException {
-		long before = System.currentTimeMillis();
-		//StringTokenizer st = new StringTokenizer(br.readLine());
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		m = Integer.parseInt(br.readLine());
-		n = Integer.parseInt(br.readLine());
-		br.close();
+		m = Integer.parseInt(st.nextToken());
+		n = Integer.parseInt(st.nextToken());
 		
 		for(int i = 1; i <= m; i++) {
 			answer.append(i + " ");

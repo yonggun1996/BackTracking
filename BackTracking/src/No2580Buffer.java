@@ -1,31 +1,40 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
-public class No2580 {
+public class No2580Buffer {
 	
 	static int[][] sdokoo_array = new int[9][9];
-	
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = null;
 		
 		for(int i = 0; i < 9; i++) {
 			for(int j = 0; j < 9; j++) {
-				sdokoo_array[i][j] = in.nextInt();
+				st = new StringTokenizer(br.readLine());
+				sdokoo_array[i][j] = Integer.parseInt(st.nextToken());
 			}
 		}
 		
 		search(0, 0);
 	}
 	
-	public static void search(int x, int y){
+	public static void search(int x, int y) throws IOException {
 		if(x == 9 || y == 9) {
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 			
 			for(int i = 0; i < 9; i++) {
 				for(int j = 0; j < 9; j++) {
-					System.out.print(sdokoo_array[i][j] + " ");
+					bw.write(String.valueOf(sdokoo_array[i][j]) + " ");
 				}
-				System.out.println();
+				bw.newLine();
 			}
 			
+			bw.flush();
 			System.exit(0);
 		}else {
 			if(sdokoo_array[x][y] == 0) {
@@ -131,7 +140,6 @@ public class No2580 {
 			}
 			
 		}
-		
 	}
 
 }

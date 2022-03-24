@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -10,17 +15,20 @@ public class No14889Buffer {
 	static ArrayList<StringBuilder> team_list1 = new ArrayList<StringBuilder>();
 	static ArrayList<StringBuilder> team_list2 = new ArrayList<StringBuilder>();
 
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st;
 		
-		int n = in.nextInt();
+		int n = Integer.parseInt(br.readLine());
 		stat = new int[n][n];
 		visit = new boolean[n];
 		int[] member = new int[n / 2];
 		
 		for(int i = 0; i < n; i++) {
+			st = new StringTokenizer(br.readLine());
 			for(int j = 0; j < n; j++) {
-				stat[i][j] = in.nextInt();
+				stat[i][j] = Integer.parseInt(st.nextToken());
 			}//in - for
 		}//out - for
 		
@@ -41,7 +49,10 @@ public class No14889Buffer {
 		}
 		
 		Collections.sort(synergy_list);
-		System.out.println(synergy_list.get(0));
+		bw.write(String.valueOf(synergy_list.get(0)));
+		bw.flush();
+		bw.close();
+		br.close();
 	}//main
 	
 	public static void Divide_team(int[] member, int index) {
